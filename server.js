@@ -33,7 +33,7 @@ app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
 });
 
-app.get("/api/products", (req, res) => {
+app.get("/api/items", (req, res) => {
   connection.query('SELECT * FROM items', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);

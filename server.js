@@ -22,7 +22,7 @@ connection.connect((err) => {
     console.error("Database connection failed:", err);
     return;
   }
-  console.log("✅ Connected to MySQL!");
+  console.log("Connected to MySQL!");
 });
 
 app.get("/", (req, res) => {
@@ -31,4 +31,11 @@ app.get("/", (req, res) => {
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running on port ${process.env.PORT}`);
+});
+
+app.get("/api/products", (req, res) => {
+  connection.query('SELECT * FROM products', (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
+    res.json(results);
+  });
 });

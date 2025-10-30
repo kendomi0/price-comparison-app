@@ -34,7 +34,7 @@ app.listen(process.env.PORT, () => {
 });
 
 app.get("/api/products", (req, res) => {
-  connection.query('SELECT * FROM products', (err, results) => {
+  connection.query('SELECT * FROM items', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });

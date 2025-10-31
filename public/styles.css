@@ -23,3 +23,8 @@ input, button {
 .descriptor {
     font-weight: bold;
 }
+
+.unit-price {
+    color: blue;
+    font-weight: bold;
+}

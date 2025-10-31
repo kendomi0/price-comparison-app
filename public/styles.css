@@ -19,3 +19,7 @@ input, button {
     color: green;
     font-weight: bold;
 }
+
+.descriptor {
+    font-weight: bold;
+}

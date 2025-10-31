@@ -29,9 +29,39 @@
       document.getElementById('results').innerHTML = items.map(item => 
         `<div class="item">
           <h3>${item.name}</h3>
-          <p>Brand: ${item.brand}</p>
-          <p>Store: ${item.store_name}</p>
-          <p class="price">$${item.price}</p>
+          <p>
+            <span class="descriptor">
+              Organic:
+            </span>
+            ${item.is_organic ? 'Yes' : 'No'}
+          </p>
+          <p>
+            <span class="descriptor">
+              Brand:
+            </span>
+            ${item.brand}
+          </p>
+          <p>
+            <span class="descriptor">
+              Store:
+            </span>
+            ${item.store_name}
+            <span class="descriptor">
+              (Store brand:
+            ${item.is_store_brand ? 'Yes' : 'No'})
+            </span>
+          </p>
+          <p class="price">
+            $${item.price}
+          </p>
+          <p>
+            <span class="descriptor">
+              Unit Price:
+            </span>
+            <span class="unit-price">
+              $${item.unit_price}/${item.unit}
+            </span>
+          </p>
         </div>`
       ).join('');
     }

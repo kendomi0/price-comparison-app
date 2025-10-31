@@ -1,0 +1,79 @@
+-- Set size_value
+UPDATE items
+SET size_value = CASE item_id
+	WHEN 1 THEN 16
+	WHEN 2 THEN 16
+	WHEN 3 THEN 12
+	WHEN 4 THEN 18
+	WHEN 5 THEN 18
+	WHEN 6 THEN 8
+	WHEN 7 THEN 6
+	WHEN 8 THEN 8
+	WHEN 9 THEN 0.5
+	WHEN 10 THEN 0.5
+	WHEN 11 THEN 0.5
+	WHEN 12 THEN 32
+	WHEN 13 THEN 32
+	WHEN 14 THEN 32
+	WHEN 15 THEN 16
+	WHEN 16 THEN 1.3
+	WHEN 17 THEN 16
+	WHEN 18 THEN 12
+	WHEN 19 THEN 16
+	WHEN 20 THEN 16
+	WHEN 21 THEN 32
+	WHEN 22 THEN 12
+	WHEN 23 THEN 12
+	WHEN 24 THEN 6
+	WHEN 25 THEN 0.5
+	WHEN 26 THEN 12
+	WHEN 27 THEN 16
+	WHEN 28 THEN 32
+	WHEN 29 THEN 12
+	WHEN 30 THEN 16
+END;
+
+-- Set unit
+UPDATE items
+SET unit = CASE item_id
+	WHEN 1 THEN 'oz'	
+	WHEN 2 THEN 'oz'	
+	WHEN 3 THEN 'oz'	
+	WHEN 4 THEN 'egg'	
+	WHEN 5 THEN 'egg'	
+	WHEN 6 THEN 'oz'	
+	WHEN 7 THEN 'oz'	
+	WHEN 8 THEN 'oz'	
+	WHEN 9 THEN 'gallon'	
+	WHEN 10 THEN 'gallon'	
+	WHEN 11 THEN 'gallon'	
+	WHEN 12 THEN 'oz'	
+	WHEN 13 THEN 'oz'	
+	WHEN 14 THEN 'oz'	
+	WHEN 15 THEN 'oz'	
+	WHEN 16 THEN 'lb'	
+	WHEN 17 THEN 'oz'	
+	WHEN 18 THEN 'oz'	
+	WHEN 19 THEN 'oz'	
+	WHEN 20 THEN 'oz'	
+	WHEN 21 THEN 'oz'	
+	WHEN 22 THEN 'egg'	
+	WHEN 23 THEN 'egg'	
+	WHEN 24 THEN 'oz'	
+	WHEN 25 THEN 'gallon'	
+	WHEN 26 THEN 'egg'	
+	WHEN 27 THEN 'oz'	
+	WHEN 28 THEN 'oz'	
+	WHEN 29 THEN 'oz'	
+	WHEN 30 THEN 'oz'	
+END;
+
+-- Add unit_price column
+ALTER TABLE items ADD COLUMN unit_price DECIMAL(10,2);
+
+-- Calculate unit_price
+UPDATE items
+SET unit_price = ROUND(price / size_value, 2);
+
+-- View results
+SELECT * FROM items;

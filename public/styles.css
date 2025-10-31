@@ -19,3 +19,12 @@ input, button {
     color: green;
     font-weight: bold;
 }
+
+.descriptor {
+    font-weight: bold;
+}
+
+.unit-price {
+    color: blue;
+    font-weight: bold;
+}

@@ -1,31 +1,43 @@
-require('dotenv').config();
-const express = require('express');
-const mysql = require('mysql2');
+import express from "express";
+import mysql from "mysql2";
+import dotenv from "dotenv";
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+dotenv.config();
 
 const app = express();
-app.use(express.json());
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const db = mysql.createConnection({
+app.use(express.json());
+app.use(express.static('public'));
+
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: { rejectUnauthorized: false }
 });
 
-db.connect(err => {
-  if (err) throw err;
-  console.log('✅ MySQL connected');
+connection.connect((err) => {
+  if (err) {
+    console.error("Database connection failed:", err);
+    return;
+  }
+  console.log("Connected to MySQL!");
 });
 
-app.get('/food', (req, res) => {
-  db.query('SELECT * FROM food_items', (err, results) => {
-    if (err) throw err;
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+app.get("/api/items", (req, res) => {
+  connection.query('SELECT * FROM items', (err, results) => {
+    if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });
-});
-
-app.get('/', (req, res) => {
-  res.send('Server is running');
 });
 
 app.listen(process.env.PORT, () => {

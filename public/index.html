@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Price Comparison</title>
+  <style>
+    body { font-family: Arial; max-width: 800px; margin: 50px auto; }
+    input, button { padding: 10px; margin: 10px 0; }
+    .item { border: 1px solid #ddd; padding: 15px; margin: 10px 0; }
+    .price { color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Price Comparison</h1>
+  <input id="search" placeholder="Search product">
+  <button onclick="searchItems()">Find Cheapest</button>
+  <div id="results"></div>
+
+  <script>
+    async function searchItems() {
+      const product = document.getElementById('search').value;
+      const res = await fetch('/api/items?product=' + product + '&sortBy=price');
+      const items = await res.json();
+      
+      document.getElementById('results').innerHTML = items.map(item => 
+        `<div class="item">
+          <h3>${item.name}</h3>
+          <p>Brand: ${item.brand}</p>
+          <p>Store: ${item.store_name}</p>
+          <p class="price">$${item.price}</p>
+        </div>`
+      ).join('');
+    }
+  </script>
+</body>
+</html>

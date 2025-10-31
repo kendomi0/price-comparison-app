@@ -30,7 +30,7 @@
         `<div class="item">
           <h3>${item.name}</h3>
           <p>Brand: ${item.brand}</p>
-          <p>Store: ${item.store_name}</p>
+          <p>Store: ${item.store_name} (Store brand: ${item.is_store_brand ? 'Yes' : 'No'})</p>
           <p class="price">$${item.price}</p>
         </div>`
       ).join('');

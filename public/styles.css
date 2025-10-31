@@ -1,0 +1,21 @@
+body {
+    font-family: Arial; 
+    max-width: 800px; 
+    margin: 50px auto;
+}
+
+input, button {
+    padding: 10px; 
+    margin: 10px 0;
+}
+
+.item {
+    border: 1px solid #ddd; 
+    padding: 15px; 
+    margin: 10px 0;
+}
+
+.price {
+    color: green;
+    font-weight: bold;
+}

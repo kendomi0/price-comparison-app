@@ -34,7 +34,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/items", (req, res) => {
-  connection.query('SELECT * FROM items', (err, results) => {
+  const { item, category, sortBy } = req.query;
+  
+  let query = 'SELECT * FROM items WHERE 1=1';
+  const params = [];
+
+  if (category) {
+    query += ' AND category = ?';
+    params.push(category);
+  }
+  
+  if (sortBy === 'price') {
+    query += ' ORDER BY price ASC';
+  }
+  
+  connection.query(query, params, (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });

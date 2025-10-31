@@ -1,12 +1,16 @@
 import express from "express";
 import mysql from "mysql2";
 import dotenv from "dotenv";
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
+app.use(express.static('public'));
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -26,11 +30,7 @@ connection.connect((err) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
-
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 app.get("/api/items", (req, res) => {
@@ -38,4 +38,8 @@ app.get("/api/items", (req, res) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });
+});
+
+app.listen(process.env.PORT, () => {
+  console.log(`Server running on port ${process.env.PORT}`);
 });

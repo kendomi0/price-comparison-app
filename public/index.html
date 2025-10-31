@@ -5,17 +5,27 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Price Comparison</h1>
+  <h1>Price Comparison test</h1>
+  <div class="products">
+  <button onclick="filterProduct('Almond Butter')">Almond Butter</button>
+  <button onclick="filterProduct('Cheese')">Cheese</button>
+  <button onclick="filterProduct('Eggs')">Eggs</button>
+  <button onclick="filterProduct('Meat')">Meat</button>
+  <button onclick="filterProduct('Milk')">Milk</button>
+  <button onclick="filterProduct('Yogurt')">Yogurt</button>
+  </div>
   <input id="search" placeholder="Search product">
   <button onclick="searchItems()">Find Cheapest</button>
   <div id="results"></div>
 
-  <script>
-    async function searchItems() {
-      const product = document.getElementById('search').value;
-      const res = await fetch('/api/items?product=' + product + '&sortBy=price');
-      const items = await res.json();
-      
+ <script>
+  async function filterProduct(productName) {
+    const res = await fetch('/api/items?category=' + productName + '&sortBy=price');
+    const items = await res.json();
+    displayResults(items);
+  }
+
+    function displayResults(items) {
       document.getElementById('results').innerHTML = items.map(item => 
         `<div class="item">
           <h3>${item.name}</h3>

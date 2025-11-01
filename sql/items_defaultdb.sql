@@ -1,7 +1,3 @@
--- Create database
-CREATE DATABASE defaultdb;
-USE defaultdb;
-
 -- Create items table
 CREATE TABLE items (
     item_id INT AUTO_INCREMENT PRIMARY KEY,

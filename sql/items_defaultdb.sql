@@ -32,7 +32,7 @@ VALUES
     ('Whole milk plain greek yogurt', 'Yogurt', 'Cabot', 5.19, '32 oz', FALSE, FALSE, 'ShopRite', 32, 'oz'),					
     ('Nonfat plain greek yogurt', 'Yogurt', 'Fage', 6.99, '32 oz', FALSE, FALSE, 'ShopRite', 32, 'oz'),					
     ('93% lean ground beef', 'Meat', 'Nature''s Reserve', 7.99, '16 oz', FALSE, FALSE, 'ShopRite', 16, 'oz'),					
-    ('93% lean ground beef', 'Meat', 'ShopRite', 9.74, '1.3 lb', FALSE, TRUE, 'ShopRite', 1.3, 'lb'),					
+    ('93% lean ground beef', 'Meat', 'ShopRite', 9.74, '20.8 oz', FALSE, TRUE, 'ShopRite', 20.8, 'oz'),					
     ('Wagyu ground beef', 'Meat', 'Tajima', 8.99, '16 oz', FALSE, FALSE, 'ShopRite', 16, 'oz'),					
     ('Creamy Almond Butter', 'Almond Butter', 'Simply Nature', 3.55, '12 oz', FALSE, TRUE, 'Aldi', 12, 'oz'),					
     ('93% lean ground beef', 'Meat', 'Aldi', 7.29, '16 oz', FALSE, TRUE, 'Aldi', 16, 'oz'),					

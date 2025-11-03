@@ -44,8 +44,8 @@ app.get("/api/items", (req, res) => {
     params.push(category);
   }
   
-  if (sortBy === 'price') {
-    query += ' ORDER BY price ASC';
+  if (sortBy === 'unit_price') {
+    query += ' ORDER BY unit_price ASC';
   }
   
   connection.query(query, params, (err, results) => {

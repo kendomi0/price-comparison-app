@@ -20,7 +20,7 @@
 
  <script>
   async function filterProduct(productName) {
-    const res = await fetch('/api/items?category=' + productName + '&sortBy=price');
+    const res = await fetch('/api/items?category=' + productName + '&sortBy=unit_price');
     const items = await res.json();
     displayResults(items);
   }

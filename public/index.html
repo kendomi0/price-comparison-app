@@ -29,31 +29,43 @@
       document.getElementById('results').innerHTML = items.map(item => 
         `<div class="item">
           <h3>${item.name}</h3>
+
           <p>
             <span class="descriptor">
-              Organic:
+              Size:
             </span>
-            ${item.is_organic ? 'Yes' : 'No'}
+          ${item.size}
           </p>
+
           <p>
             <span class="descriptor">
               Brand:
             </span>
             ${item.brand}
           </p>
+
           <p>
             <span class="descriptor">
               Store:
             </span>
             ${item.store_name}
-            <span class="descriptor">
+            <span class="descriptor-italic">
               (Store brand:
             ${item.is_store_brand ? 'Yes' : 'No'})
             </span>
           </p>
+
+          <p>
+            <span class="descriptor">
+              Organic:
+            </span>
+            ${item.is_organic ? 'Yes' : 'No'}
+          </p>
+
           <p class="price">
             $${item.price}
           </p>
+
           <p>
             <span class="descriptor">
               Unit Price:
@@ -62,6 +74,7 @@
               $${item.unit_price}/${item.unit}
             </span>
           </p>
+
         </div>`
       ).join('');
     }

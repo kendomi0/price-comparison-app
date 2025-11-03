@@ -28,3 +28,7 @@ input, button {
     color: blue;
     font-weight: bold;
 }
+
+.descriptor-italic {
+    font-style: italic;
+}

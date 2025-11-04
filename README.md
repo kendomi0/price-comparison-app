@@ -1,8 +1,8 @@
-# Grocery Store App
-An app for comparing prices of grocery store food items.
+# Price Comparison App
+An app for comparing prices of food items from various grocery stores.
 
 ## Live Demo
-View the app here: [Grocery Store App on Render](https://grocery-store-app-wegj.onrender.com/)
+View the app here: [Price Comparison App on Render](https://grocery-store-app-wegj.onrender.com/)
 
 ## Technologies Used
 - Express
@@ -25,7 +25,7 @@ The `sql/` directory contains scripts for creating the `items` table and inserti
 ## Setup Instructions
 ```bash
 # Clone repository
-git clone https://github.com/kendomi0/grocery-store-app/
+git clone https://github.com/kendomi0/price-comparison-app
 cd grocery-store-app
 
 # Install dependencies
